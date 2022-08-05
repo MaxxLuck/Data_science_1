@@ -1,7 +1,7 @@
 import numpy as np
 
 def random_predict(number:int=np.random.randint(1, 101)) -> int:
-    """угадываем число через середину списка
+    """угадываем число через среднее между максимальным и минимальным в диапазоне
 
     Args:
         number (int, optional): _загаданное число. По умолчанию загадывает компьютер в диапазоне от 1 до 100. Defaults to np.random.randint(1, 101).
@@ -22,7 +22,9 @@ def random_predict(number:int=np.random.randint(1, 101)) -> int:
         elif predict_num < number:
             min_num = predict_num
         else:
-            #print(f'Алгоритм рассчитал число за {count} попыток')
+            #print(f'Алгоритм рассчитал число {number} за {count} попыток') #активировал данную строку, 
+            # если надо посмотреть все ли числа вылавливает алгоритм 
+            # (сказали, что некоторые алгоритмы могут не ловить числа 1 и 99)
             break
     return count
 
@@ -37,11 +39,15 @@ def score_game(random_predict) -> int:
     """
     count_ls=[] #список для записи количества попыток
     np.random.seed(1)
-    random_array = np.random.randint(1, 101, size=(231))
+    random_array = np.random.randint(1, 101, size=(1000))
+    count1 = 0
     for number in random_array:
         count_ls.append(random_predict(number))
+        count1+=1
+        #print(f"итерация номер {count1}") #активировал данную строку чтобы посмотреть количество итераций.
+        # После 233 итерации работа алгоритма останавливалась.     
     score = int(np.mean(count_ls))
-    print(f'Ваш алгоритм угадывает число за {score} попыток')
+    print(f'Наш алгоритм угадывает число за {score} попыток')
     return score
 
 score_game(random_predict)
