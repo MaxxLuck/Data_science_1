@@ -16,7 +16,7 @@ def random_predict(number:int=np.random.randint(1, 101)) -> int:
     while True:
         count +=1
         predict_num = int((min_num + max_num) / 2)  # загадываем число как среднее между 
-                                                  # минимальным и максимальным и отбрасываем дробную часть
+                                                    # минимальным и максимальным и отбрасываем дробную часть
         
         if predict_num > number:
             max_num = predict_num
