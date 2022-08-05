@@ -19,8 +19,10 @@ def random_predict(number:int=np.random.randint(1, 101)) -> int:
         
         if predict_num > number:
             max_num = predict_num
+            
         elif predict_num < number:
             min_num = predict_num
+            
         else:
             #print(f'Алгоритм рассчитал число {number} за {count} попыток') #активировал данную строку, 
             # если надо посмотреть все ли числа вылавливает алгоритм 
@@ -41,6 +43,7 @@ def score_game(random_predict) -> int:
     np.random.seed(1)
     random_array = np.random.randint(1, 101, size=(1000))
     count1 = 0
+    
     for number in random_array:
         count_ls.append(random_predict(number))
         count1+=1
